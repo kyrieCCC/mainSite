@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --body-color: #1d1e23;
+    --primary-color: #ffffff;
+    --second-color: #bd53ed;
+    --subDetail-color: #a4abb6;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+div span {
+    color: var(--body-color);
+    position: relative;
+}
+
+div span::before {
+    content: '';
+    width: 2px;
+    height: 35px;
+    background-color: var(--second-color);
+
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: blink .7s infinite;
+}
+
+.nameContainer span::before {
+    background-color: var(--body-color);
+}
+
+.jobContainer span::before {
+    height: 30px;
+    background-color: var(--body-color);
+}
+
+.otherContainer span::before {
+    height: 20px;
+    background-color: var(--subDetail-color);
+}
+
+/* 设置闪烁效果 */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+div span.start-blinking::before {
+    animation: blink .7s infinite;
+}
+
+div span.stop-blinking-forever::before {
+    opacity: 0;
+}
+
+div span.stop-blinking::before {
+    animation: none;
+}
+
+.nameContainer {
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    flex-direction: row;
+    align-items: center;
+}
+
+.jobContainer {
+    font-size: 2rem;
+    display: flex;
+    font-weight: bold;
+    flex-direction: row;
+    align-items: center;
+}
+
+.otherContainer {
+    margin-top: 23px;
+    font-size: 1rem;
+}
+
+.otherContainer span {
+    color: var(--subDetail-color);
+}
+
+
+.btnContainer {
+    /* background-color: red; */
+    border-radius: 5px;
+    padding: 15px 10px;
+    position: relative;
+    transition: transform .1s;
+    filter: blur(0);
+    color: #cce7f8;
+    font-size: 2.5rem;
+    -webkit-animation: shining 0.5s alternate infinite;
+    animation: shining 0.5s alternate infinite;
+}
+
+.btnContainer:hover {
+    cursor: none;
+    background-color: rgba(100, 100, 100, 0.1);
+    animation: blurEffect 1s forwards;
+}
+
+.btnContainer span:hover {
+    animation: colorChange 3s linear infinite;
+    background: linear-gradient(90deg, red, yellow, green, cyan, blue, violet);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: gradient 5s linear infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes blurEffect {
+    0% {
+        filter: blur(0);
+    }
+
+    50% {
+        filter: blur(5px);
+    }
+
+    100% {
+        filter: blur(0);
+    }
+}
+
+@keyframes shining {
+    from {
+        text-shadow: 0 0 10px lightblue, 0 0 20px lightblue, 0 0 30px lightblue, 0 0 40px skyblue, 0 0 50px skyblue, 0 0 60px skyblue;
+    }
+
+    to {
+        text-shadow: 0 0 5px lightblue, 0 0 10px lightblue, 0 0 15px lightblue, 0 0 20px skyblue, 0 0 25px skyblue, 0 0 30px skyblue;
+    }
+}
+
+#logo_svg {
+    width: 200px;
+    height: 153px;
+}
